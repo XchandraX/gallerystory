@@ -2,7 +2,7 @@
 @props(['mobile' => false])
 
 @php
-    $categories = App\Models\Category::all();
+    $categories = App\Models\category::all();
 @endphp
 
 @if($mobile)
