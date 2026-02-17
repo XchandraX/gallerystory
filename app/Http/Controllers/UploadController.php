@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\Foto;
+use App\Models\category;
+use App\Models\foto;
 use Illuminate\Http\Request;
 
 class UploadController extends Controller
@@ -13,7 +13,7 @@ class UploadController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
+        $categories = category::all();
         return view('upload', compact('categories'));
     }
 
@@ -32,7 +32,7 @@ class UploadController extends Controller
         foreach ($request->file('image') as $file) {
             $path = $file->store('photos', 'public');
 
-            Foto::create([
+            foto::create([
                 'title'       => $request->title,
                 'category_id' => $request->category_id,
                 'is_private'  => $request->is_private,

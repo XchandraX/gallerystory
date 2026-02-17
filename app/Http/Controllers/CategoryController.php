@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -12,7 +12,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = category::all();
 
         return view('index', compact('categories'));
     }
@@ -35,7 +35,7 @@ class CategoryController extends Controller
             'slug' => 'required|unique:categories,slug',
         ]);
 
-        Category::create([
+        category::create([
             'name' => $request->name,
             'slug' => $request->slug,
         ]);
@@ -48,7 +48,7 @@ class CategoryController extends Controller
      */
     public function show($slug, Request $request)
     {
-        $category = Category::where('slug', $slug)->firstOrFail();
+        $category = category::where('slug', $slug)->firstOrFail();
         $query = $category->fotos()->where('is_private', 'public');
 
         // Sorting

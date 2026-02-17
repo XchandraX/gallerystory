@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Foto;
+use App\Models\foto;
 use Illuminate\Http\Request;
 
 class PrivateGalleryController extends Controller
@@ -50,7 +50,7 @@ class PrivateGalleryController extends Controller
         }
 
         // Ambil foto private dengan sorting
-        $query = Foto::where('is_private', 'private');
+        $query = foto::where('is_private', 'private');
         
         $sort = $request->get('sort', 'terbaru');
         if ($sort === 'terlama') {
