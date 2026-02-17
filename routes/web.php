@@ -23,3 +23,13 @@ Route::prefix('upload')->group(function () {
     Route::get('/', [UploadController::class, 'create'])->name('upload.create');
     Route::post('/', [UploadController::class, 'store'])->name('upload.store');
 });
+
+Route::get('/test-cloudinary', function() {
+    return [
+        'cloud_name' => env('CLOUDINARY_CLOUD_NAME'),
+        'api_key' => env('CLOUDINARY_KEY'),
+        'api_secret' => env('CLOUDINARY_SECRET') ? 'set' : 'not set',
+        'cloud_url' => env('CLOUDINARY_URL'),
+        'config_cloud_name' => config('cloudinary.cloud_url'),
+    ];
+});

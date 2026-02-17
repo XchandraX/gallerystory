@@ -66,7 +66,7 @@ class PrivateGalleryController extends Controller
             return response()->json([
                 'photos' => $photos->map(fn ($p) => [
                     'title' => $p->title,
-                    'image_url' => asset('storage/'.$p->image),
+                    'image_url' => $p->image,
                 ]),
                 'next_page' => $photos->currentPage() + 1,
                 'has_more' => $photos->hasMorePages(),
